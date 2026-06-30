@@ -316,6 +316,82 @@
             border-color: #3b82f6;
         }
 
+        /* ===== MEMBERSHIP SECTION ===== */
+        .membership {
+            padding: 3rem 0 2rem;
+        }
+
+        .membership .section-title i {
+            color: #facc15;
+            margin-left: 0.5rem;
+        }
+
+        .membership-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            padding: 2.5rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .membership-card:hover {
+            border-color: rgba(250, 204, 21, 0.3);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .membership-card .subtitle {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 1.8rem;
+            opacity: 0.9;
+        }
+
+        .phone-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 1.5rem;
+        }
+
+        .phone-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(37, 99, 235, 0.25);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            text-decoration: none;
+            direction: ltr;
+        }
+
+        .phone-item:hover {
+            background: rgba(37, 99, 235, 0.3);
+            border-color: #3b82f6;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .phone-item i {
+            color: #60a5fa;
+            font-size: 1.2rem;
+        }
+
+        .phone-item .phone-number {
+            direction: ltr;
+            unicode-bidi: embed;
+            font-feature-settings: "tnum";
+        }
+
         /* ===== FOOTER ===== */
         footer {
             text-align: center;
@@ -365,6 +441,11 @@
             .section-title {
                 font-size: 1.9rem;
             }
+
+            .phone-item {
+                font-size: 1rem;
+                padding: 0.6rem 1.2rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -383,6 +464,18 @@
             }
             .gallery-grid {
                 grid-template-columns: repeat(3, 1fr);
+            }
+            .membership-card {
+                padding: 1.8rem 1.2rem;
+            }
+            .phone-list {
+                gap: 0.8rem;
+            }
+            .phone-item {
+                font-size: 0.9rem;
+                padding: 0.5rem 1rem;
+                width: 100%;
+                justify-content: center;
             }
         }
 
@@ -483,6 +576,38 @@
                 <img src="screen4.png" alt="لقطة شاشة 4" loading="lazy" />
                 <img src="screen5.png" alt="لقطة شاشة 5" loading="lazy" />
                 <img src="screen6.png" alt="لقطة شاشة 6" loading="lazy" />
+            </div>
+        </section>
+
+        <!-- ===== MEMBERSHIP ===== -->
+        <section class="membership">
+            <h2 class="section-title">
+                <i class="fas fa-user-plus"></i>
+                <span>احصل على العضوية</span>
+            </h2>
+            <div class="membership-card">
+                <p class="subtitle">
+                    <i class="fas fa-phone-alt" style="color: #60a5fa; margin-left: 0.5rem;"></i>
+                    تواصل معنا عبر الأرقام التالية للحصول على العضوية:
+                </p>
+                <div class="phone-list">
+                    <a href="tel:711425775" class="phone-item">
+                        <i class="fas fa-phone"></i>
+                        <span class="phone-number">711425775</span>
+                    </a>
+                    <a href="tel:737674123" class="phone-item">
+                        <i class="fas fa-phone"></i>
+                        <span class="phone-number">737674123</span>
+                    </a>
+                    <a href="tel:781432299" class="phone-item">
+                        <i class="fas fa-phone"></i>
+                        <span class="phone-number">781432299</span>
+                    </a>
+                </div>
+                <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #94a3b8;">
+                    <i class="fas fa-clock" style="color: #60a5fa; margin-left: 0.4rem;"></i>
+                    متاحون للتواصل طوال أيام الأسبوع
+                </p>
             </div>
         </section>
 
