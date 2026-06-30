@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تحميل تطبيق تام - العروض الحصرية</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ===== RESET & GLOBAL ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(145deg, #0b1120 0%, #1a2a5e 100%);
+            color: #f1f5f9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 0 2rem;
+            flex: 1;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3rem 0 2rem;
+            gap: 2rem;
+        }
+
+        .hero-content {
+            flex: 1 1 360px;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            object-fit: cover;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .app-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to left, #facc15, #f97316);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            opacity: 0.92;
+            max-width: 540px;
+            margin: 0.75rem 0 1.75rem;
+            padding-left: 0.5rem;
+            border-right: 4px solid #3b82f6;
+            padding-right: 1rem;
+        }
+
+        .download-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem 1.5rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #2563eb;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.4);
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn i {
+            font-size: 1.4rem;
+        }
+
+        .download-btn:hover:not(:disabled) {
+            background: #1d4ed8;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 18px 36px rgba(37, 99, 235, 0.55);
+        }
+
+        .download-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-wrapper {
+            width: 100%;
+            max-width: 320px;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .progress-wrapper.active {
+            display: block;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #facc15, #f97316);
+            border-radius: 20px;
+            transition: width 0.3s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            margin-top: 0.3rem;
+        }
+
+        .progress-text .percentage {
+            font-weight: 700;
+            color: #facc15;
+        }
+
+        .version-badge {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+            padding: 0.45rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #cbd5e1;
+        }
+
+        .hero-visual {
+            flex: 1 1 320px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-mockup {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 40px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+            transition: transform 0.4s ease;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-16px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            padding: 3.5rem 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title span {
+            background: linear-gradient(to left, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 1.8rem 1.2rem;
+            border-radius: 28px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card i {
+            font-size: 2.6rem;
+            color: #60a5fa;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #f1f5f9;
+        }
+
+        .card p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            padding: 3rem 0 1.5rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
+            background: #1e293b;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+            border-color: #3b82f6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 1.5rem;
+            opacity: 0.7;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+
+        footer i {
+            color: #f87171;
+            margin: 0 4px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 820px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .description {
+                border-right: none;
+                padding-right: 0;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .logo-wrapper {
+                justify-content: center;
+            }
+
+            .download-group {
+                justify-content: center;
+            }
+
+            .app-title {
+                font-size: 2.6rem;
+            }
+
+            .phone-mockup {
+                max-width: 250px;
+            }
+
+            .section-title {
+                font-size: 1.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app-title {
+                font-size: 2.2rem;
+            }
+            .download-btn {
+                padding: 0.7rem 1.6rem;
+                font-size: 1rem;
+            }
+            .version-badge {
+                font-size: 0.8rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 400px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2563eb;
+            border-radius: 20px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="logo-wrapper">
+                    <img src="logo.png" alt="شعار تام" class="logo" loading="lazy" />
+                    <span class="app-title">تام</span>
+                </div>
+                <p class="description">
+                    اكتشف أفضل العروض والخصومات من المتاجر والمطاعم والعيادات
+                    وغيرها في مكان واحد. استمتع بتجربة سهلة وسريعة للوصول إلى أفضل العروض المتاحة.
+                </p>
+                <div class="download-group">
+                    <button class="download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i> تحميل التطبيق
+                    </button>
+                    <span class="version-badge"><i class="far fa-circle"></i> الإصدار 1.0.0</span>
+                </div>
+
+                <!-- ===== PROGRESS BAR ===== -->
+                <div class="progress-wrapper" id="progressWrapper">
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>جاري التحميل...</span>
+                        <span class="percentage" id="progressPercent">0%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="main-screen.png" alt="شاشة رئيسية لتطبيق تام" class="phone-mockup" loading="lazy" />
+            </div>
+        </section>
+
+        <!-- ===== FEATURES ===== -->
+        <section class="features">
+            <h2 class="section-title">✨ <span>مميزات</span> التطبيق</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <i class="fas fa-gift"></i>
+                    <h3>خصومات حصرية</h3>
+                    <p>استمتع بخصومات مميزة لدى العديد من المتاجر والخدمات.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>سرعة وسهولة</h3>
+                    <p>واجهة سهلة الاستخدام للوصول إلى العروض خلال ثوانٍ.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>تجربة حديثة</h3>
+                    <p>تصميم عصري متوافق مع جميع أجهزة أندرويد.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>آمن وموثوق</h3>
+                    <p>بياناتك محفوظة مع تجربة استخدام مستقرة وآمنة.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== GALLERY ===== -->
+        <section class="gallery">
+            <h2 class="section-title">📱 <span>لقطات</span> من التطبيق</h2>
+            <div class="gallery-grid">
+                <img src="screen1.png" alt="لقطة شاشة 1" loading="lazy" />
+                <img src="screen2.png" alt="لقطة شاشة 2" loading="lazy" />
+                <img src="screen3.png" alt="لقطة شاشة 3" loading="lazy" />
+                <img src="screen4.png" alt="لقطة شاشة 4" loading="lazy" />
+                <img src="screen5.png" alt="لقطة شاشة 5" loading="lazy" />
+                <img src="screen6.png" alt="لقطة شاشة 6" loading="lazy" />
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            <p>
+                <i class="far fa-copyright"></i> 2026 <strong>تام</strong> — جميع الحقوق محفوظة
+                <span style="display:inline-block; margin:0 8px;">•</span>
+                صنع بـ <i class="fas fa-heart" style="color:#f87171;"></i> في اليمن
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            const downloadBtn = document.getElementById('downloadBtn');
+            const progressWrapper = document.getElementById('progressWrapper');
+            const progressFill = document.getElementById('progressFill');
+            const progressPercent = document.getElementById('progressPercent');
+
+            let isDownloading = false;
+
+            // رابط التحميل الفعلي
+            const DOWNLOAD_URL = 'https://github.com/tahamurshedqasem/tam-app-apk/releases/download/v1.0.0/Tam.apk';
+
+            // محاكاة التقدم (لأنه لا يمكن تتبع تقدم التحميل الحقيقي عبر fetch)
+            function simulateProgress() {
+                let progress = 0;
+                const interval = setInterval(() => {
+                    // زيادة عشوائية ولكن بواقعية
+                    const increment = Math.random() * 6 + 2;
+                    progress = Math.min(progress + increment, 99);
+
+                    progressFill.style.width = progress + '%';
+                    progressPercent.textContent = Math.floor(progress) + '%';
+
+                    if (progress >= 99) {
+                        clearInterval(interval);
+                        // اكتمل التحميل
+                        progressFill.style.width = '100%';
+                        progressPercent.textContent = '100%';
+
+                        // إعادة تعيين الزر بعد فترة قصيرة
+                        setTimeout(() => {
+                            resetDownloadState();
+                            // فتح رابط التحميل (بدء التنزيل الفعلي)
+                            window.location.href = DOWNLOAD_URL;
+                        }, 500);
+                    }
+                }, 120);
+            }
+
+            function resetDownloadState() {
+                isDownloading = false;
+                downloadBtn.disabled = false;
+                downloadBtn.innerHTML = '<i class="fas fa-download"></i> تحميل التطبيق';
+                progressWrapper.classList.remove('active');
+                progressFill.style.width = '0%';
+                progressPercent.textContent = '0%';
+            }
+
+            function startDownload() {
+                if (isDownloading) return;
+
+                isDownloading = true;
+                downloadBtn.disabled = true;
+                downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحميل...';
+
+                // إظهار شريط التقدم
+                progressWrapper.classList.add('active');
+                progressFill.style.width = '0%';
+                progressPercent.textContent = '0%';
+
+                // بدء محاكاة التقدم
+                simulateProgress();
+            }
+
+            downloadBtn.addEventListener('click', startDownload);
+
+            // إعادة تعيين الحالة في حال فشل التحميل (مثلاً عند مغادرة الصفحة)
+            window.addEventListener('beforeunload', function() {
+                if (isDownloading) {
+                    // لا نفعل شيئًا، المستخدم غادر الصفحة
+                }
+            });
+
+            // إذا تم الضغط على الزر مرة أخرى أثناء التحميل، لا يحدث شيء
+        })();
+    </script>
+</body>
+</html>
